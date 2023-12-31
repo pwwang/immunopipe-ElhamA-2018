@@ -6,13 +6,13 @@ Reanalysis of the scRNA-seq and scTCR-seq data from [Azizi, Elham, et al. 2018](
 
 ## Data preparation
 
-The data was downloaded from [GSE114724](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE114727), where 5 samples from 3 patients (BC9, BC10 and BC11) were sequenced with scRNA-seq and scTCR-seq.
+The data was downloaded from [GSE114724](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE114724), where 5 samples from 3 patients (BC9, BC10 and BC11) were sequenced with scRNA-seq and scTCR-seq.
 
 See `prepare-data.sh` for details.
 
 ## Configuration
 
-> [!CAUTION]
+> [!NOTE]
 > This is not a replication of the original paper, primarily due to the irreproducibility of the clustering results. This is a reanalysis of the data using [`immunopipe`](https://github.com/pwwang/immunopipe), showing the potential of the pipeline similar analyses listed in the paper.
 >
 
