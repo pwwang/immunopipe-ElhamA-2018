@@ -1,0 +1,562 @@
+{
+  "Clustree plots": {
+    "#": {
+      "#": {
+        "table_of_images": [
+          {
+            "kind": "table_image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/clustrees/seurat_clusters.clustree.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/clustrees/seurat_clusters.clustree.pdf",
+            "name": "seurat_clusters",
+            "descr": "Resolutions: 2.4, 2.5, 2.6, 2.7, 2.8; resolution used: 2.8"
+          }
+        ]
+      }
+    }
+  },
+  "Number of cells in each cluster": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Plots showing the number of cells per cluster"
+          }
+        ],
+        "tabs": [
+          {
+            "name": "Bar Plot",
+            "contents": [
+              {
+                "kind": "image",
+                "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/stats/Number-of-cells-in-each-cluster.bar.png",
+                "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/stats/Number-of-cells-in-each-cluster.bar.pdf"
+              }
+            ]
+          },
+          {
+            "name": "Pie Chart",
+            "contents": [
+              {
+                "kind": "image",
+                "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/stats/Number-of-cells-in-each-cluster.pie.png",
+                "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/stats/Number-of-cells-in-each-cluster.pie.pdf"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "Number of cells in each cluster by Sample": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Plots showing the number/faction of cells per cluster, by Sample"
+          }
+        ],
+        "tabs": [
+          {
+            "name": "Bar Plot",
+            "contents": [
+              {
+                "kind": "image",
+                "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/stats/Number-of-cells-in-each-cluster-by-Sample.bar.png",
+                "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/stats/Number-of-cells-in-each-cluster-by-Sample.bar.pdf"
+              }
+            ]
+          },
+          {
+            "name": "Table",
+            "contents": [
+              {
+                "kind": "table",
+                "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/stats/Number-of-cells-in-each-cluster-by-Sample.txt"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "All Clonotypes along (DC_1)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Histogram showing number of cells along <code>DC_1<\/code>"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/All-Clonotypes-along-DC_1-/All-Clonotypes-along-DC_1-.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/All-Clonotypes-along-DC_1-/All-Clonotypes-along-DC_1-.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "All Clonotypes along (DC_2)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Histogram showing number of cells along <code>DC_2<\/code>"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/All-Clonotypes-along-DC_2-/All-Clonotypes-along-DC_2-.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/All-Clonotypes-along-DC_2-/All-Clonotypes-along-DC_2-.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "All Clonotypes along (DC_3)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Histogram showing number of cells along <code>DC_3<\/code>"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/All-Clonotypes-along-DC_3-/All-Clonotypes-along-DC_3-.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/All-Clonotypes-along-DC_3-/All-Clonotypes-along-DC_3-.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Top 20 Clonotypes along DC_1 (BC9)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Histogram showing number of cells by <code>BC9_20Clonotypes<\/code> along <code>DC_1<\/code>"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_1-BC9-/Top-20-Clonotypes-along-DC_1-BC9-.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_1-BC9-/Top-20-Clonotypes-along-DC_1-BC9-.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Top 20 Clonotypes along DC_1 (BC10)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Histogram showing number of cells by <code>BC10_20Clonotypes<\/code> along <code>DC_1<\/code>"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_1-BC10-/Top-20-Clonotypes-along-DC_1-BC10-.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_1-BC10-/Top-20-Clonotypes-along-DC_1-BC10-.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Top 20 Clonotypes along DC_1 (BC11)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Histogram showing number of cells by <code>BC11_20Clonotypes<\/code> along <code>DC_1<\/code>"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_1-BC11-/Top-20-Clonotypes-along-DC_1-BC11-.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_1-BC11-/Top-20-Clonotypes-along-DC_1-BC11-.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Top 20 Clonotypes along DC_2": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Histogram showing number of cells by <code>All_Clonotypes<\/code> in each <code>Patient<\/code> along <code>DC_2<\/code>"
+          }
+        ],
+        "table_of_images": [
+          {
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_2/Top-20-Clonotypes-along-DC_2-BC11.png",
+            "descr": "BC11",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_2/Top-20-Clonotypes-along-DC_2-BC11.pdf"
+          },
+          {
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_2/Top-20-Clonotypes-along-DC_2-BC09.png",
+            "descr": "BC09",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_2/Top-20-Clonotypes-along-DC_2-BC09.pdf"
+          },
+          {
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_2/Top-20-Clonotypes-along-DC_2-BC10.png",
+            "descr": "BC10",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_2/Top-20-Clonotypes-along-DC_2-BC10.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Top 20 Clonotypes along DC_3": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Histogram showing number of cells by <code>All_Clonotypes<\/code> in each <code>Patient<\/code> along <code>DC_3<\/code>"
+          }
+        ],
+        "table_of_images": [
+          {
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_3/Top-20-Clonotypes-along-DC_3-BC11.png",
+            "descr": "BC11",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_3/Top-20-Clonotypes-along-DC_3-BC11.pdf"
+          },
+          {
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_3/Top-20-Clonotypes-along-DC_3-BC09.png",
+            "descr": "BC09",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_3/Top-20-Clonotypes-along-DC_3-BC09.pdf"
+          },
+          {
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_3/Top-20-Clonotypes-along-DC_3-BC10.png",
+            "descr": "BC10",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Top-20-Clonotypes-along-DC_3/Top-20-Clonotypes-along-DC_3-BC10.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Distribution of clonotypes": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Histogram showing number of cells in each <code>Patient<\/code> along <code>descClonotypes<\/code>"
+          }
+        ],
+        "table_of_images": [
+          {
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Distribution-of-clonotypes/Distribution-of-clonotypes-BC09.png",
+            "descr": "BC09",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Distribution-of-clonotypes/Distribution-of-clonotypes-BC09.pdf"
+          },
+          {
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Distribution-of-clonotypes/Distribution-of-clonotypes-BC10.png",
+            "descr": "BC10",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Distribution-of-clonotypes/Distribution-of-clonotypes-BC10.pdf"
+          },
+          {
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Distribution-of-clonotypes/Distribution-of-clonotypes-BC11.png",
+            "descr": "BC11",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/hists/Distribution-of-clonotypes/Distribution-of-clonotypes-BC11.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Number of genes expressed in each cluster": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Plots showing the number of genes expressed in each seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/ngenes/Number-of-genes-expressed-in-each-cluster.boxplot.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/ngenes/Number-of-genes-expressed-in-each-cluster.boxplot.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "DiffusionMapComponents": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "violinplots for selected features, by seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/features/DiffusionMapComponents.violin.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/features/DiffusionMapComponents.violin.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Gene_Signatures_Along_DC1": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Average expression values for selected features, by seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/features/Gene_Signatures_Along_DC1.avgheatmap.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/features/Gene_Signatures_Along_DC1.avgheatmap.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Gene_Signatures_Along_DC2": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Average expression values for selected features, by seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/features/Gene_Signatures_Along_DC2.avgheatmap.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/features/Gene_Signatures_Along_DC2.avgheatmap.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Gene_Signatures_Along_DC3": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Average expression values for selected features, by seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/features/Gene_Signatures_Along_DC3.avgheatmap.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/features/Gene_Signatures_Along_DC3.avgheatmap.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Features on UMAP": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "featureplots for selected features, by seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/features/Features-on-UMAP.feature.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/features/Features-on-UMAP.feature.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Diffusion Components in all T cells": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "violinplots for selected features, by All_T_Cells"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/features/Diffusion-Components-in-all-T-cells.violin.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/features/Diffusion-Components-in-all-T-cells.violin.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Diffusion Components in clusters ordered by mean(DC_1)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "violinplots for selected features, by seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/features/Diffusion-Components-in-clusters-ordered-by-mean-DC_1-.violin.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/features/Diffusion-Components-in-clusters-ordered-by-mean-DC_1-.violin.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "DiffusionMap": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/DiffusionMap.dim.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/DiffusionMap.dim.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "UMAP": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/UMAP.dim.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/UMAP.dim.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Samples on UMAP": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for Sample"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/Samples-on-UMAP.dim.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/Samples-on-UMAP.dim.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Clonotypes on UMAP (BC9)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for BC9_Clonotypes"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/Clonotypes-on-UMAP-BC9-.dim.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/Clonotypes-on-UMAP-BC9-.dim.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Clonotypes on UMAP (BC10)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for BC10_Clonotypes"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/Clonotypes-on-UMAP-BC10-.dim.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/Clonotypes-on-UMAP-BC10-.dim.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Clonotypes on UMAP (BC11)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for BC11_Clonotypes"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/Clonotypes-on-UMAP-BC11-.dim.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/Clonotypes-on-UMAP-BC11-.dim.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Top 20 Clonotypes on UMAP (BC9)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/Top-20-Clonotypes-on-UMAP-BC9-.dim.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/Top-20-Clonotypes-on-UMAP-BC9-.dim.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Top 20 Clonotypes on UMAP (BC10)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/Top-20-Clonotypes-on-UMAP-BC10-.dim.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/Top-20-Clonotypes-on-UMAP-BC10-.dim.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "Top 20 Clonotypes on UMAP (BC11)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/Top-20-Clonotypes-on-UMAP-BC11-.dim.png",
+            "download": "/workdir/Immunopipe-output/SeuratClusterStats/samples.seurat.cluster_stats/dimplots/Top-20-Clonotypes-on-UMAP-BC11-.dim.pdf"
+          }
+        ]
+      }
+    }
+  }
+}
