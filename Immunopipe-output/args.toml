@@ -1,0 +1,1359 @@
+# The name for the pipeline, will affect the default workdir and outdir.
+name = "Immunopipe"
+
+# The default profile from the configuration to run the pipeline. This profile will be used unless a profile is specified in the process or in the .run method of pipen. You can check the available profiles by running `pipen profile`
+## profile = None
+
+# The output directory of the pipeline [default: ./<name>-output]
+outdir = "/mnt/disks/.cwd/Immunopipe-output"
+
+# The logging level for the main logger, only takes effect after pipeline is initialized [default: INFO]
+## loglevel = None
+
+# Whether enable caching for processes [default: True]
+# - True: Enable caching for all processes
+# - False: Disable caching for all processes
+# - force: Forcing caching even when jobs signature changed
+#    Such as envs or script file change
+## cache = None
+
+# How we should deal with job errors.
+# - ignore: Let other jobs keep running. But the process is still failing when done.
+# - halt: Halt the pipeline, other running jobs will be killed.
+# - retry: Retry this job on the scheduler system.
+## error_strategy = None
+
+# How many times to retry the job when failed
+## num_retries = None
+
+# How many jobs to run simultaneously by the scheduler
+## forks = None
+
+# How many jobs to submit simultaneously to the scheduler system
+## submission_batch = None
+
+# The scheduler to run the jobs
+## scheduler = None
+
+# A list of plugins to only enabled or disabled for this pipeline. To disable plugins, use `-<plugin_name>`
+## plugins = None
+
+# The working directory of the pipeline
+workdir = "/mnt/disks/.cwd/.pipen/Immunopipe"
+
+# Whether to flatten the output from jobs of the process (without creating subdirectories with job indexes).
+## output_flatten = None
+
+# The default scheduler options. Will update to the default one
+[scheduler_opts]
+
+# Plugin options. Will update to the default.
+[plugin_opts]
+diagram_theme = "default"
+diagram_savedot = false
+diagram_loglevel = "info"
+diagram_hide = false
+poplog_loglevel = "info"
+poplog_pattern = "\\[PIPEN-POPLOG\\]\\[(?P<level>\\w+?)\\] (?P<message>.*)"
+poplog_source = "stdout"
+poplog_max = 0
+poplog_flush_interval = 5.0
+args_hide = false
+args_dump = true
+poplog_jobs = []
+
+# Template options. Will update to the default.
+[template_opts]
+
+# +----------------------------------------------------------------------------+
+# | Arguments for process: SampleInfo                                          |
+# +----------------------------------------------------------------------------+
+[SampleInfo]
+# (process level) Whether enable caching for processes [default: True]
+## cache = None
+
+# (process level) How we should deal with job errors.
+## error_strategy = None
+
+# (process level) How many times to retry the job when failed
+## num_retries = None
+
+# (process level) The scheduler to run the jobs
+## scheduler = None
+
+# (process level) How many jobs to run simultaneously by the scheduler
+## forks = None
+
+# (process level) Whether to flatten the output from jobs of the process (without creating subdirectories with job indexes).
+## output_flatten = None
+
+# (process level) Plugin options. Will update to the default.
+[SampleInfo.plugin_opts]
+poplog_pattern = "^(?P<level>INFO|WARN|WARNING|CRITICAL|ERROR|DEBUG?)\\s*\\[\\d+-\\d+-\\d+ \\d+:\\d+:\\d+\\] (?P<message>.*)$"
+report = "file://../reports/common.svelte"
+
+# (process level) The default scheduler options. Will update to the default one
+[SampleInfo.scheduler_opts]
+
+# Environment variables for the process
+[SampleInfo.envs]
+# The separator of the input file.
+sep = "\t"
+
+# Whether to save the mutated columns.
+save_mutated = false
+
+# The columns to exclude in the table in the report.
+# Could be a list or a string separated by comma.
+exclude_cols = "TCRData,BCRData,RNAData"
+
+# A dict of mutaters to mutate the data frame.
+# The key is the column name and the value is the R expression to mutate the column. The dict will be transformed to a list in R and passed to `dplyr::mutate`.
+# You may also use `paired()` to identify paired samples. The function takes following arguments:
+# * `df`: The data frame. Use `.` if the function is called in a dplyr pipe.
+# * `id_col`: The column name in `df` for the ids to be returned in the final output.
+# * `compare_col`: The column name in `df` to compare the values for each id in `id_col`.
+# * `idents`: The values in `compare_col` to compare. It could be either an an integer or a vector. If it is an integer, the number of values in `compare_col` must be the same as the integer for the `id` to be regarded as paired. If it is a vector, the values in `compare_col` must be the same as the values in `idents` for the `id` to be regarded as paired.
+# * `uniq`: Whether to return unique ids or not. Default is `TRUE`.
+# If `FALSE`, you can mutate the meta data frame with the returned ids. Non-paired ids will be `NA`.
+[SampleInfo.envs.mutaters]
+
+# The statistics to perform.
+# The keys are the case names and the values are the parameters inheirted from `envs.defaults`.
+[SampleInfo.envs.stats]
+
+# The default parameters for `envs.stats`.
+[SampleInfo.envs.defaults]
+# The type of the plot.
+# See the supported plot types here:
+# <https://pwwang.github.io/plotthis/reference/index.html> The plot_type should be lower case and the plot function used in `plotthis` should be used. The mapping from plot_type to the plot function is like `bar -> BarPlot`, `box -> BoxPlot`, etc.
+plot_type = "bar"
+
+# The additional formats to save the plot.
+# By default, the plot will be saved in png, which is also used to display in the report. You can add more formats to save the plot.
+# For example, `more_formats = ["pdf", "svg"]`.
+more_formats = []
+
+# Whether to save the R code to reproduce the plot.
+# The data used to plot will also be saved.
+save_code = false
+
+# An expression to subset the data frame before plotting.
+# The expression should be a string of R expression that will be passed to `dplyr::filter`. For example, `subset = "Sample == 'A'"`.
+## subset = None
+
+# The section name in the report.
+# In case you want to group the plots in the report.
+## section = None
+
+# The description of the plot, shown in the report.
+## descr = None
+
+# The device parameters for the plot.
+[SampleInfo.envs.defaults.devpars]
+# The width of the plot.
+## width = None
+
+# The height of the plot.
+## height = None
+
+# The resolution of the plot.
+res = 100
+
+# +----------------------------------------------------------------------------+
+# | Arguments for process: ScRepLoading                                        |
+# +----------------------------------------------------------------------------+
+[ScRepLoading]
+# (process level) Whether enable caching for processes [default: True]
+## cache = None
+
+# (process level) How we should deal with job errors.
+## error_strategy = None
+
+# (process level) How many times to retry the job when failed
+## num_retries = None
+
+# (process level) The scheduler to run the jobs
+## scheduler = None
+
+# (process level) How many jobs to run simultaneously by the scheduler
+## forks = None
+
+# (process level) Whether to flatten the output from jobs of the process (without creating subdirectories with job indexes).
+## output_flatten = None
+
+# (process level) Plugin options. Will update to the default.
+[ScRepLoading.plugin_opts]
+poplog_pattern = "^(?P<level>INFO|WARN|WARNING|CRITICAL|ERROR|DEBUG?)\\s*\\[\\d+-\\d+-\\d+ \\d+:\\d+:\\d+\\] (?P<message>.*)$"
+
+# (process level) The default scheduler options. Will update to the default one
+[ScRepLoading.scheduler_opts]
+
+# Environment variables for the process
+[ScRepLoading.envs]
+# The type of the data to load.
+type = "auto"
+
+# The columns to exclude from the metadata to add to the object.
+# A list of column names to exclude or a string with column names separated by `,`. By default, `BCRData`, `TCRData` and `RNAData` will be excluded.
+exclude = ["BCRData", "TCRData", "RNAData"]
+
+# The format of the TCR/BCR data files.
+## format = None
+
+# The temporary directory to store the symbolic links to the TCR/BCR data files.
+tmpdir = "/tmp"
+
+# The extra arguments for `scRepertoire::combineTCR` function.
+# See also <https://www.borch.dev/uploads/screpertoire/reference/combinetcr>
+[ScRepLoading.envs.combineTCR]
+samples = true
+
+# The extra arguments for `scRepertoire::combineBCR` function.
+# See also <https://www.borch.dev/uploads/screpertoire/reference/combinebcr>
+[ScRepLoading.envs.combineBCR]
+samples = true
+
+# +----------------------------------------------------------------------------+
+# | Arguments for process: SeuratPreparing                                     |
+# +----------------------------------------------------------------------------+
+[SeuratPreparing]
+# (process level) Whether enable caching for processes [default: True]
+## cache = None
+
+# (process level) How we should deal with job errors.
+## error_strategy = None
+
+# (process level) How many times to retry the job when failed
+## num_retries = None
+
+# (process level) The scheduler to run the jobs
+## scheduler = None
+
+# (process level) How many jobs to run simultaneously by the scheduler
+## forks = None
+
+# (process level) Whether to flatten the output from jobs of the process (without creating subdirectories with job indexes).
+## output_flatten = None
+
+# (process level) Plugin options. Will update to the default.
+[SeuratPreparing.plugin_opts]
+poplog_pattern = "^(?P<level>INFO|WARN|WARNING|CRITICAL|ERROR|DEBUG?)\\s*\\[\\d+-\\d+-\\d+ \\d+:\\d+:\\d+\\] (?P<message>.*)$"
+report = "file://../reports/common.svelte"
+
+# (process level) The default scheduler options. Will update to the default one
+[SeuratPreparing.scheduler_opts]
+
+# Environment variables for the process
+[SeuratPreparing.envs]
+# Whether to cache the information at different steps.
+# If `True`, the seurat object will be cached in the job output directory, which will be not cleaned up when job is rerunning.
+# The cached seurat object will be saved as `<signature>.<kind>.RDS` file, where `<signature>` is the signature determined by the input and envs of the process.
+# See <https://github.com/satijalab/seurat/issues/7849>, <https://github.com/satijalab/seurat/issues/5358> and <https://github.com/satijalab/seurat/issues/6748> for more details also about reproducibility issues.
+# To not use the cached seurat object, you can either set `cache` to `False` or delete the cached file at `<signature>.RDS` in the cache directory.
+cache = "./.cache"
+
+# Number of cores to use.
+# Used in `future::plan(strategy = "multicore", workers = <ncores>)` to parallelize some Seurat procedures.
+ncores = 4
+
+# Filter expression to filter cells, using `tidyrseurat::filter()`.
+# It can also be a dictionary of expressions, where the names of the list are sample names.
+# You can have a default expression in the list with the name "DEFAULT" for the samples that are not listed.
+# Available QC keys include `nFeature_RNA`, `nCount_RNA`, `percent.mt`, `percent.ribo`, `percent.hb`, and `percent.plat`.
+#  /// Tip | Example Including the columns added above, all available QC keys include `nFeature_RNA`, `nCount_RNA`, `percent.mt`, `percent.ribo`, `percent.hb`, and `percent.plat`. For example:
+#  ```toml [SeuratPreparing.envs]  cell_qc = "nFeature_RNA > 200 & percent.mt < 5" ``` will keep cells with more than 200 genes and less than 5%% mitochondrial genes.
+# /// 
+cell_qc = "nFeature_RNA > 200 & percent.mt < 20"
+
+# The minimum number of cells that a gene must be expressed in to be kept. This is used in `Seurat::CreateSeuratObject()`.
+# Futher QC (`envs.cell_qc`, `envs.gene_qc`) will be performed after this.
+# It doesn't work when data is loaded from loom files or RDS/qs2 files.
+min_cells = 0
+
+# The minimum number of features that a cell must express to be kept. This is used in `Seurat::CreateSeuratObject()`.
+# Futher QC (`envs.cell_qc`, `envs.gene_qc`) will be performed after this.
+# It doesn't work when data is loaded from loom files or RDS/qs2 files.
+min_features = 0
+
+# Features to rename. It can be a dict with the keys as the original feature names and the values as the new feature names, or file path to a two-column tab-delimited file (no header) with the first column as the original feature names and the second column as the new feature names.
+## features = None
+
+# Whether use SCTransform routine to integrate samples or not.
+# Before the following procedures, the `RNA` layer will be split by samples.
+#  If `False`, following procedures will be performed in the order:
+# * [`NormalizeData`](https://satijalab.org/seurat/reference/normalizedata).
+# * [`FindVariableFeatures`](https://satijalab.org/seurat/reference/findvariablefeatures).
+# * [`ScaleData`](https://satijalab.org/seurat/reference/scaledata).
+# See <https://satijalab.org/seurat/articles/seurat5_integration#layers-in-the-seurat-v5-object> and <https://satijalab.org/seurat/articles/pbmc3k_tutorial.html>  If `True`, following procedures will be performed in the order:
+# * [`SCTransform`](https://satijalab.org/seurat/reference/sctransform).
+# See <https://satijalab.org/seurat/articles/seurat5_integration#perform-streamlined-one-line-integrative-analysis> 
+use_sct = false
+
+# Whether to skip integration or not.
+no_integration = false
+
+# The tool used to perform contamination correction.
+# If None or not specified, no contamination correction will be performed.
+## contam_correction = None
+
+# Whether to keep the "Contaminated" (original) assay after QC is finished.
+# If kept, we can use it to visualize some marker expressions for comparisons.
+keep_contam_assay = false
+
+# The doublet detector to use.
+doublet_detector = "none"
+
+# The mutaters to mutate the metadata to the cells.
+# These new columns will be added to the metadata of the Seurat object and will be saved in the output file.
+# See <https://pwwang.github.io/biopipen.utils.R/reference/MutateSeuratMeta.html>
+[SeuratPreparing.envs.mutaters]
+
+# The plots for QC metrics.
+# It should be a json (or python dict) with the keys as the names of the plots and the values also as dicts with the following keys:
+# * kind: The kind of QC. Either `gene`, `cell` (default), or `contam`/`contamination`.
+# * devpars: The device parameters for the plot. A dict with `res`, `height`, and `width`.
+# * more_formats: The formats to save the plots other than `png`.
+# * save_code: Whether to save the code to reproduce the plot.
+# * other arguments passed to [`biopipen.utils::VizSeuratCellQC`](https://pwwang.github.io/biopipen.utils.R/reference/VizSeuratCellQC.html) when `kind` is `cell`, [`biopipen.utils::VizSeuratGeneQC`](https://pwwang.github.io/biopipen.utils.R/reference/VizSeuratGeneQC.html) when `kind` is `gene`, or [`biopipen.utils::RunSeuratContamination`](https://pwwang.github.io/biopipen.utils.R/reference/RunSeuratContamination.html) when `kind` is `contam`/`contamination`.
+[SeuratPreparing.envs.qc_plots."Violin Plots"]
+kind = "cell"
+plot_type = "violin"
+
+[SeuratPreparing.envs.qc_plots."Violin Plots".devpars]
+res = 100
+height = 600
+width = 1200
+
+[SeuratPreparing.envs.qc_plots."Scatter Plots"]
+kind = "cell"
+plot_type = "scatter"
+
+[SeuratPreparing.envs.qc_plots."Scatter Plots".devpars]
+res = 100
+height = 800
+width = 1200
+
+[SeuratPreparing.envs.qc_plots."Ridge Plots"]
+kind = "cell"
+plot_type = "ridge"
+
+[SeuratPreparing.envs.qc_plots."Ridge Plots".devpars]
+res = 100
+height = 800
+width = 1200
+
+[SeuratPreparing.envs.qc_plots."Distribution of number of cells a gene is expressed in"]
+kind = "gene"
+plot_type = "histogram"
+
+[SeuratPreparing.envs.qc_plots."Distribution of number of cells a gene is expressed in".devpars]
+res = 100
+height = 1200
+width = 1200
+
+# Filter genes.
+# `gene_qc` is applied after `cell_qc`.
+[SeuratPreparing.envs.gene_qc]
+# The minimum number of cells that a gene must be expressed in to be kept.
+min_cells = 0
+
+# The genes to exclude. Multiple genes can be specified by comma separated values, or as a list.
+#  /// Tip | Example ```toml [SeuratPreparing.envs]  gene_qc = { min_cells = 3 } ``` will keep genes that are expressed in at least 3 cells.
+# /// 
+excludes = []
+
+# Arguments for `RunSeuratCellCycleScoring()`.
+# When "S.Score" and/or "G2M.Score" are specified in `envs.SCTransform.vars-to-regress` when `envs.use_sct = TRUE` or in `envs.ScaleData.vars-to-regress` when `envs.use_sct = FALSE`, this will be automatically enabled to calculate the cell cycle scores and regress them out in the following transformation step.
+# Otherwise if this is empty, cell cycle scoring and the normalization before cell cycle scoring will be skipped.
+[SeuratPreparing.envs.ccs_args]
+# Arguments for [`NormalizeData()`](https://satijalab.org/seurat/reference/normalizedata).
+# `object` is specified internally, and `-` in the key will be replaced with `.`.
+[SeuratPreparing.envs.NormalizeData]
+# Arguments for [`FindVariableFeatures()`](https://satijalab.org/seurat/reference/findvariablefeatures).
+# `object` is specified internally, and `-` in the key will be replaced with `.`.
+[SeuratPreparing.envs.FindVariableFeatures]
+# Arguments for [`ScaleData()`](https://satijalab.org/seurat/reference/scaledata).
+# `object` and `features` is specified internally, and `-` in the key will be replaced with `.`.
+[SeuratPreparing.envs.ScaleData]
+# Arguments for [`RunPCA()`](https://satijalab.org/seurat/reference/runpca).
+# `object` and `features` is specified internally, and `-` in the key will be replaced with `.`.
+[SeuratPreparing.envs.RunPCA]
+# Arguments for [`SCTransform()`](https://satijalab.org/seurat/reference/sctransform).
+# `object` is specified internally, and `-` in the key will be replaced with `.`.
+[SeuratPreparing.envs.SCTransform]
+# Whether to return only variable genes.
+return-only-var-genes = false
+
+# The minimum number of cells that a gene must be expressed in to be kept.
+# A hidden argument of `SCTransform` to filter genes.
+# If you try to keep all genes in the `RNA` assay, you can set `min_cells` to `0` and `return-only-var-genes` to `False`.
+# See <https://github.com/satijalab/seurat/issues/3598#issuecomment-715505537>
+min_cells = 3
+
+verbose = true
+
+# Arguments for [`IntegrateLayers()`](https://satijalab.org/seurat/reference/integratelayers).
+# `object` is specified internally, and `-` in the key will be replaced with `.`.
+# When `use_sct` is `True`, `normalization-method` defaults to `SCT`.
+[SeuratPreparing.envs.IntegrateLayers]
+# The method to use for integration.
+method = "harmony"
+
+# Arguments for `decontX()`.
+[SeuratPreparing.envs.decontX]
+# Arguments for `scCDC` functions:
+[SeuratPreparing.envs.scCDC]
+# arguments for `scCDC::ContaminationDetection()`
+[SeuratPreparing.envs.scCDC.Detection]
+# arguments for `scCDC::ContaminationQuantification()`
+[SeuratPreparing.envs.scCDC.Quantification]
+# arguments for `scCDC::ContaminationCorrection()`
+[SeuratPreparing.envs.scCDC.Correction]
+# Arguments to run [`DoubletFinder`](https://github.com/chris-mcginnis-ucsf/DoubletFinder).
+# See also <https://demultiplexing-doublet-detecting-docs.readthedocs.io/en/latest/DoubletFinder.html>.
+[SeuratPreparing.envs.DoubletFinder]
+# Number of PCs to use for 'doubletFinder' function.
+PCs = 10
+
+# Number of doublets to simulate as a proportion of the pool size.
+pN = 0.25
+
+# Number of expected doublets as a proportion of the pool size.
+doublets = 0.075
+
+# Number of cores to use for `DoubletFinder::paramSweep`.
+# Set to `None` to use `envs.ncores`.
+# Since parallelization of the function usually exhausts memory, if big `envs.ncores` does not work for `DoubletFinder`, set this to a smaller number.
+ncores = 1
+
+# Arguments to run [`scDblFinder`](https://rdrr.io/bioc/scDblFinder/man/scDblFinder.html).
+[SeuratPreparing.envs.scDblFinder]
+# The expected doublet rate.
+dbr = 0.075
+
+# Number of cores to use for `scDblFinder`.
+# Set to `None` to use `envs.ncores`.
+ncores = 1
+
+# +----------------------------------------------------------------------------+
+# | Arguments for process: ModuleScoreCalculator                               |
+# +----------------------------------------------------------------------------+
+[ModuleScoreCalculator]
+# (process level) Whether enable caching for processes [default: True]
+## cache = None
+
+# (process level) How we should deal with job errors.
+## error_strategy = None
+
+# (process level) How many times to retry the job when failed
+## num_retries = None
+
+# (process level) The scheduler to run the jobs
+## scheduler = None
+
+# (process level) How many jobs to run simultaneously by the scheduler
+## forks = None
+
+# (process level) Whether to flatten the output from jobs of the process (without creating subdirectories with job indexes).
+## output_flatten = None
+
+# (process level) Plugin options. Will update to the default.
+[ModuleScoreCalculator.plugin_opts]
+poplog_pattern = "^(?P<level>INFO|WARN|WARNING|CRITICAL|ERROR|DEBUG?)\\s*\\[\\d+-\\d+-\\d+ \\d+:\\d+:\\d+\\] (?P<message>.*)$"
+
+# (process level) The default scheduler options. Will update to the default one
+[ModuleScoreCalculator.scheduler_opts]
+
+# Environment variables for the process
+[ModuleScoreCalculator.envs]
+# The modules to calculate the scores.
+# Keys are the names of the expression programs and values are the dicts inherited from `env.defaults`.
+# Here are some examples -
+# >>> {
+# >>>     "CellCycleMouse": {"features": "cc.genes.mouse"},
+# >>>     "CellCycle": {"features": "cc.genes.updated.2019"},
+# >>>     "Exhaustion": {"features": "HAVCR2,ENTPD1,LAYN,LAG3"},
+# >>>     "Activation": {"features": "IFNG"},
+# >>>     "Proliferation": {"features": "STMN1,TUBB"}
+# >>> }
+# 
+# For `CellCycle`, the columns `S.Score`, `G2M.Score` and `Phase` will be added to the metadata. `S.Score` and `G2M.Score` are the cell cycle scores for each cell, and `Phase` is the cell cycle phase for each cell.
+#  You can also add Diffusion Components (DC) to the modules
+# >>> {"DC": {"features": 2, "kind": "diffmap"}}
+# will perform diffusion map as a reduction and add the first 2 components as `DC_1` and `DC_2` to the metadata. `diffmap` is a shortcut for `diffusion_map`. Other key-value pairs will pass to [`destiny::DiffusionMap()`](https://www.rdocumentation.org/packages/destiny/versions/2.0.4/topics/DiffusionMap class).
+# You can later plot the diffusion map by using `reduction = "DC"` in `env.dimplots` in `SeuratClusterStats`.
+# This requires [`SingleCellExperiment`](https://bioconductor.org/packages/release/bioc/html/SingleCellExperiment.html) and [`destiny`](https://bioconductor.org/packages/release/bioc/html/destiny.html) R packages.
+[ModuleScoreCalculator.envs.modules.DC]
+kind = "diffmap"
+k = 20
+n_pcs = 30
+features = 5
+
+[ModuleScoreCalculator.envs.modules.Treg]
+features = ["NT5E", "CD3D", "CD3G", "CD3E", "CD4", "CD5", "ENTPD1", "CTLA4", "IZUMO1R", "TNFRSF18", "IL2RA", "ITGAE", "LAG3", "TGFB1", "LRRC32", "TNFRSF4", "SELL", "FOXP3", "STAT5A", "STAT5B", "LGALS1", "IL10", "IL12A", "EBI3", "TGFB1"]
+
+[ModuleScoreCalculator.envs.modules.CD8TCellActivation]
+features = ["CD69", "CCR7", "CD27", "BTLA", "CD40LG", "IL2RA", "CD3E", "CD47", "EOMES", "GNLY", "GZMA", "GZMB", "PRF1", "IFNG", "CD8A", "CD8B", "CD95L", "LAMP1", "LAG3", "CTLA4", "HLA-DRA", "TNFRSF4", "ICOS", "TNFRSF9", "TNFRSF18"]
+
+[ModuleScoreCalculator.envs.modules.AntiInflammatory]
+features = ["TIGIT", "IDO1", "LGALS3", "PDCD1", "FOXP3", "ENTPD1", "CD274", "CSF2", "CTLA4", "CXCL12", "CXCL5", "IL8", "MIF", "PTGS2", "VEGFA"]
+
+[ModuleScoreCalculator.envs.modules.Anergy]
+features = ["EGR3", "NR4A3", "EGR1", "NR4A2", "EGR2", "TNFSF11", "IRF4", "GCH1", "GADD45B", "NFATC1", "JARID2", "SLC29A3", "HLF", "ZFP36L1", "RNF19A", "ADORA2B", "CCRN41", "DUSP6", "NDRG1", "ADORA2A", "HSPA1A", "PFKP", "FYN", "CTSE", "ZFP629", "F2R", "RNF128", "LAG3", "RGS16", "E2F1", "E2F2"]
+
+[ModuleScoreCalculator.envs.modules.ProInflammatory]
+features = ["IL1A", "IL1B", "TNF", "IFNG", "TBX21", "CCL3", "CCL4", "PRF1", "GZMA", "GZMB", "GZMK", "GZMH", "CD8A", "FASLG", "CCL2", "CCL20", "IL2", "IL6", "IL12a", "IL17a", "IL23a", "PTGS2", "TLR4", "TNF"]
+
+[ModuleScoreCalculator.envs.modules.LipdMediators]
+features = ["ADIPOQ", "CD137", "AGRP", "ANGPT1", "ANGPT2", "ANGPTL3", "ANGPTL4", "ANGPTL6", "BAFF", "BMP4", "CTSD", "CTSS", "CCL2", "CCL5", "RARRES2", "CFD", "CRP", "CXCL8", "CD26", "ESM1", "S100A12", "AHSG", "FGF1", "FGF2", "FGF21", "FGF23", "LGALS3", "GCG", "GH1", "HGF", "ICAM1", "IGFBP1", "IGFBP2", "IGFBP3", "IGFBP4", "IGFBP6", "IGFBP7", "IL1b", "IL6", "IL10", "IL11", "INS", "LEP", "LIF", "NGAL", "MCSF", "MIF", "MPO", "GHRL", "GHSR", "LIPE", "LPL", "AGT", "CEBPA", "CFD", "FABP4", "FASN", "IRS2", "KLF15", "PPARG", "PPARGC1A", "RETN", "SRT3", "SLC2A4", "SREBF1", "ACACB", "AXIN1", "CCND1", "CDK4", "CEBPB", "CEBPD", "DKK1", "E2F1", "FABP4", "FASN"]
+
+[ModuleScoreCalculator.envs.modules.Glycolysis]
+features = ["ALDOA", "ALDOB", "ALDOC", "BPGM", "ENO1", "ENO2", "GALM", "GCK", "GPI", "HK2", "HK3", "PFKL", "PGAM2", "PGK1", "PGK2", "PGM1", "PGM2", "PGM3", "PKLR", "TPI1"]
+
+[ModuleScoreCalculator.envs.modules.TCACycle]
+features = ["ACLY", "ACO1", "ACO2", "CS", "DLAT", "DLD", "DLST", "FH", "IDH1", "IDH2", "IDH3A", "IDH3B", "IDH3G", "MDH1", "MDH1B", "MDH2", "OGDH", "PC", "PCK1PCK2", "PDHA1", "PDHB", "SDHA", "SDHB", "SDHD", "SUCLA2", "SUCLG1", "SUCLG2"]
+
+[ModuleScoreCalculator.envs.modules.PentosePhosphatePathway]
+features = ["G6PD", "PGLS", "PRPS1", "PRPS1L1", "PRPS2", "RBKS", "RPE", "RPIA", "TALDO1", "TKT"]
+
+[ModuleScoreCalculator.envs.modules.GlycogenMetabolism]
+features = ["NRN1", "FAM129A", "1L23A", "SPRY1", "GADD45B", "HSPA1A", "HSPA1B", "GPNMB", "HAVCR2", "SOAT2", "ADAMTS6"]
+
+[ModuleScoreCalculator.envs.modules.M1MacrophagePolarization]
+features = ["IL12", "IL23", "TNF", "IL6", "CD86", "MHCII", "IL1B", "MARCO", "iNOS", "CD64", "CD80", "CXCR10", "IL23", "CXCL9", "CXCL10", "CXCL11", "CD86", "IL1A", "IL1B", "IL6", "TNFa", "MHCII", "CCL5", "IRF5", "IRF1", "CD40", "IDO1", "KYNU", "CCR7", "CD45", "CD68", "CD115", "HLA-DR", "CD205", "CD14"]
+
+[ModuleScoreCalculator.envs.modules.M2MacrophagePolarization]
+features = ["ARG1", "ARG2", "IL10", "CD32", "CD163", "CD23", "CD200R1", "PDCD1LG2", "PDL1", "MARCO", "CSF1R", "CD206", "IL1RN", "IL1R2", "IL4R", "CCL4", "CCL13", "CCL20", "CCL17", "CCL18", "CCL22", "CCL24", "LYVE1", "VEGFA", "VEGFB", "VEGFC", "VEGFD", "EGF", "CTSA", "CTSB", "CSTC", "CTSD", "TGFB1", "TGFB2", "TGFB3", "MMP14", "MMP19", "MMP9", "CLEC7A", "WNT7B", "FASL", "TNFSF12", "TNFSF8", "CD276", "VTCN1", "MSR1", "FN1", "IRF4", "CD45", "CD68", "CD115", "HLA-DR", "CD205", "CD14"]
+
+[ModuleScoreCalculator.envs.modules.CytolyticsEffectorPathway]
+features = ["EOMES", "TBX21", "GZMB", "PRF1", "FASL", "GZMH", "GZMA"]
+
+[ModuleScoreCalculator.envs.modules.TypeI_InterferonResponse]
+features = ["IRF1", "IFIH1", "IFITM3", "DDX58", "IFI44L", "IFI6", "IFITM2", "NAMPT", "OASL", "RTP4", "TREX1", "ADAR", "FAM46C", "LY6E", "MCOLN2", "APOBEC3G", "IL15", "ISG15", "MX1", "TLR3"]
+
+[ModuleScoreCalculator.envs.modules.TypeII_InterferonResponse]
+features = ["IFNG", "CXCL9", "CXCL10", "STAT1", "MHC I", "MHC II", "PD-L1", "P21", "MYC", "SMAD7", "IRF1"]
+
+[ModuleScoreCalculator.envs.modules.Hypoxia_HIF_Regulated]
+features = ["AL2", "ALDOA", "AM", "BCL2", "BCL2L1", "FOS", "JUN", "SRC", "CBP", "CCR6", "CEBPB", "ENOLAS", "FAS", "FASLG", "FKBP52", "GAPDH", "GLUT1", "GLUT3", "CSF2", "IFNG", "IFNB1", "IL13", "IL1R1", "IL2RA", "IL4", "IL5", "IL6R", "IL8", "IL10R", "IL15R", "ITGA6", "ITK", "JUND", "CLB54", "MAP3K5", "MAP2K1", "MAP2K2", "MIF", "NFATC1", "NFKB2", "NFKBIE", "P53", "TGM6", "TNF", "TNFRSF1B", "TRADD", "TRAIL", "TRAP1", "VEGF"]
+
+[ModuleScoreCalculator.envs.modules.TCell_Terminal_Differentiation]
+features = ["TIGIT", "PDCD1", "CD274", "CTLA4", "LAG3", "HAVCR2", "CD244", "CD160"]
+
+[ModuleScoreCalculator.envs.modules.G1S]
+features = ["BRCA1", "BRCA2", "CCNE1", "CCNE2", "CCNG2", "CDC25A", "CDC45", "CDC6", "CDKN1A", "CDKN2C", "CDKN3", "DHFR", "E2F1", "E2F5", "H1F0", "H1FNT", "H1FOO", "H1FX", "H2AFB1", "H2AFB2", "H2AFB3", "H2AFJ", "H2AFV", "H2AFVP1", "H2AFX", "H2AFY", "H2AFY2", "H2AFZ", "H2AFZP1", "H2AFZP2", "H2AFZP3", "H2AFZP4", "H2AFZP5", "H2AFZP6", "H2BFM", "H2BFS", "H2BFWT", "H2BFXP", "H3F3A", "H3F3AP1", "H3F3AP2", "H3F3B", "H3F3C", "H1-1", "H1-5", "H1-2", "H1-3", "H1-4", "H1-12P", "H3P26", "H1-6", "H2AC1", "H2AC4", "H2AC6", "H2AC7", "H2AC8", "H2AC11", "H2AC12", "H2AC13", "H2AC14", "H2AC15", "H2AC16", "H2AC17", "H2AC2P", "H2AC3P", "H2AC9P", "H2AC10P", "H2AC5P", "H2BC1", "H2BC3", "H2BC4", "H2BC5", "H2BC6", "H2BC7", "H2BC8", "H2BC9", "H2BC10", "H2BC11", "H2BC12", "H2BC13", "H2BC14", "H2BC15", "H2BC17", "H2BC2P", "H2BC16P", "H3C1", "H3C2", "H3C3", "H3C4", "H3C6", "H3C7", "H3C8", "H3C10", "H3C11", "H3C12", "H3C9P", "H4C1", "H4C2", "H4C3", "H4C4", "H4C5", "H4C6", "H4C7", "H4C8", "H4C9", "H4C11", "H4C12", "H4C13", "H4C10P", "H2AC18", "H2AC19", "H2AC21", "H2AC20", "H2BP1", "H2BP2", "H2BC20P", "H2BC19P", "H2BC21", "H2BC18", "H3C15", "H3C14", "H3C13", "H3-7", "H4C14", "H4C15", "H2AC25", "H2BC27P", "H2BC26", "H3-4", "H4C16", "MCM2", "MCM6", "MSH2", "NASP", "NPAT", "PCNA", "RRM1", "RRM2", "SLBP", "TYMS"]
+
+[ModuleScoreCalculator.envs.modules.G2M]
+features = ["AURKA", "BIRC5", "BUB1", "BUB1B", "CCNA2", "CCNB1", "CCNB2", "CCNF", "CDC20", "CDC25B", "CDC25C", "CDK1", "CDKN2D", "CENPA", "CENPF", "CKS2", "KIF20A", "PLK1", "RACGAP1", "TOP2A"]
+
+# The mutaters to mutate the metadata after calculating the module scores.
+# The mutaters will be applied in the order specified.
+# This is useful when you want to create new scores based on the calculated module scores.
+[ModuleScoreCalculator.envs.post_mutaters]
+
+# The default parameters for `modules`.
+[ModuleScoreCalculator.envs.defaults]
+# The features to calculate the scores. Multiple features should be separated by comma.
+# You can also specify `cc.genes` or `cc.genes.updated.2019` to use the cell cycle genes to calculate cell cycle scores.
+# If so, three columns will be added to the metadata, including `S.Score`, `G2M.Score` and `Phase`.
+# Only one type of cell cycle scores can be calculated at a time.
+## features = None
+
+# Number of bins of aggregate expression levels for all analyzed features.
+nbin = 24
+
+# Number of control features selected from the same bin per analyzed feature.
+ctrl = 100
+
+# Use feature clusters returned from `DoKMeans`.
+k = false
+
+# The assay to use.
+## assay = None
+
+# Set a random seed.
+seed = 8525
+
+# Search for symbol synonyms for features in features that don't match features in object?
+search = false
+
+# Keep the scores for each feature?
+# Only works for non-cell cycle scores.
+keep = false
+
+# The aggregation function to use.
+# Only works for non-cell cycle scores.
+agg = "mean"
+
+# +----------------------------------------------------------------------------+
+# | Arguments for process: SeuratClustering                                    |
+# +----------------------------------------------------------------------------+
+[SeuratClustering]
+# (process level) Whether enable caching for processes [default: True]
+## cache = None
+
+# (process level) How we should deal with job errors.
+## error_strategy = None
+
+# (process level) How many times to retry the job when failed
+## num_retries = None
+
+# (process level) The scheduler to run the jobs
+## scheduler = None
+
+# (process level) How many jobs to run simultaneously by the scheduler
+## forks = None
+
+# (process level) Whether to flatten the output from jobs of the process (without creating subdirectories with job indexes).
+## output_flatten = None
+
+# (process level) Plugin options. Will update to the default.
+[SeuratClustering.plugin_opts]
+poplog_pattern = "^(?P<level>INFO|WARN|WARNING|CRITICAL|ERROR|DEBUG?)\\s*\\[\\d+-\\d+-\\d+ \\d+:\\d+:\\d+\\] (?P<message>.*)$"
+
+# (process level) The default scheduler options. Will update to the default one
+[SeuratClustering.scheduler_opts]
+
+# Environment variables for the process
+[SeuratClustering.envs]
+# Number of cores to use.
+# Used in `future::plan(strategy = "multicore", workers = <ncores>)` to parallelize some Seurat procedures.
+# See also: <https://satijalab.org/seurat/articles/future_vignette.html>
+ncores = 4
+
+# Where to cache the information at different steps.
+# If `True`, the seurat object will be cached in the job output directory, which will be not cleaned up when job is rerunning.
+# Set to `False` to not cache the results.
+cache = "./.cache"
+
+# The name in the metadata to save the cluster labels.
+# A shortcut for `envs["FindClusters"]["cluster.name"]`.
+ident = "seurat_clusters"
+
+# The path to the python executable where `umap-learn` is installed.
+# Needed for `RunUMAP` when `umap.method` is set to `umap-learn`.
+python = "python"
+
+# Arguments for [`FindClusters()`](https://satijalab.org/seurat/reference/findclusters).
+# `object` is specified internally, and `-` in the key will be replaced with `.`.
+# The cluster labels will be saved in cluster names and prefixed with "c".
+# The first cluster will be "c1", instead of "c0".
+[SeuratClustering.envs.FindClusters]
+# The resolution of the clustering. You can have multiple resolutions as a list or as a string separated by comma.
+# Ranges are also supported, for example: `0.1:0.5:0.1` will generate `0.1, 0.2, 0.3, 0.4, 0.5`. The step can be omitted, defaulting to 0.1.
+# The results will be saved in `<ident>_<resolution>`.
+# The final resolution will be used to define the clusters at `<ident>`.
+resolution = [2.4, 2.5, 2.6, 2.7, 2.8, 2.48]
+
+# Arguments for [`RunUMAP()`](https://satijalab.org/seurat/reference/runumap).
+# `object` is specified internally, and `-` in the key will be replaced with `.`.
+# `dims=N` will be expanded to `dims=1:N`; The maximal value of `N` will be the minimum of `N` and the number of columns - 1 for each sample.
+# You can also specify `features` instead of `dims` to use specific features for UMAP. It can be a list with the following fields: `order` (the order of the markers to use for UMAP, e.g. "desc(abs(avg_log2FC))", and `n` (the number of total features to use for UMAP, e.g. 30).
+# If `features` is a list, it will run `biopipen.utils::RunSeuratDEAnalysis` to get the markers for each group, and then select the top `n`/`ngroups` features for each group based on the `order` field.
+# If `features` is a numeric value, it will be treated as the `n` field in the list above, with the default `order` being "desc(abs(avg_log2FC))".
+[SeuratClustering.envs.RunUMAP]
+# Arguments for [`RunPCA()`](https://satijalab.org/seurat/reference/runpca).
+[SeuratClustering.envs.RunPCA]
+# Arguments for [`FindNeighbors()`](https://satijalab.org/seurat/reference/findneighbors).
+# `object` is specified internally, and `-` in the key will be replaced with `.`.
+[SeuratClustering.envs.FindNeighbors]
+# +----------------------------------------------------------------------------+
+# | Arguments for process: ScRepCombiningExpression                            |
+# +----------------------------------------------------------------------------+
+[ScRepCombiningExpression]
+# (process level) Whether enable caching for processes [default: True]
+## cache = None
+
+# (process level) How we should deal with job errors.
+## error_strategy = None
+
+# (process level) How many times to retry the job when failed
+## num_retries = None
+
+# (process level) The scheduler to run the jobs
+## scheduler = None
+
+# (process level) How many jobs to run simultaneously by the scheduler
+## forks = None
+
+# (process level) Whether to flatten the output from jobs of the process (without creating subdirectories with job indexes).
+## output_flatten = None
+
+# (process level) Plugin options. Will update to the default.
+[ScRepCombiningExpression.plugin_opts]
+poplog_pattern = "^(?P<level>INFO|WARN|WARNING|CRITICAL|ERROR|DEBUG?)\\s*\\[\\d+-\\d+-\\d+ \\d+:\\d+:\\d+\\] (?P<message>.*)$"
+
+# (process level) The default scheduler options. Will update to the default one
+[ScRepCombiningExpression.scheduler_opts]
+
+# Environment variables for the process
+[ScRepCombiningExpression.envs]
+# How to call the clone - VDJC gene (gene), CDR3 nucleotide (nt), CDR3 amino acid (aa), VDJC gene + CDR3 nucleotide (strict) or a custom variable in the data.
+cloneCall = "aa"
+
+# indicate if both or a specific chain should be used e.g. "both", "TRA", "TRG", "IGH", "IGL".
+chain = "both"
+
+# The column label in the combined clones in which clone frequency will be calculated. NULL or "none" will keep the format of input.data.
+group_by = "Sample"
+
+# Whether to proportion (TRUE) or total frequency (FALSE) of the clone based on the group_by variable.
+proportion = true
+
+# Method to subset Seurat/SCE object of barcodes without clone information
+filterNA = false
+
+# This will add a label to the frequency header, allowing the user to try multiple group_by variables or recalculate frequencies after subsetting the data.
+addLabel = false
+
+# The bins for the grouping based on proportion or frequency.
+# If proportion is FALSE and the cloneSizes are not set high enough based on frequency, the upper limit of cloneSizes will be automatically updated.
+[ScRepCombiningExpression.envs.cloneSize]
+Rare = 0.0001
+Small = 0.001
+Medium = 0.01
+Large = 0.1
+Hyperexpanded = 1
+
+# +----------------------------------------------------------------------------+
+# | Arguments for process: SeuratClusterStats                                  |
+# +----------------------------------------------------------------------------+
+[SeuratClusterStats]
+# (process level) Whether enable caching for processes [default: True]
+## cache = None
+
+# (process level) How we should deal with job errors.
+## error_strategy = None
+
+# (process level) How many times to retry the job when failed
+## num_retries = None
+
+# (process level) The scheduler to run the jobs
+## scheduler = None
+
+# (process level) How many jobs to run simultaneously by the scheduler
+## forks = None
+
+# (process level) Whether to flatten the output from jobs of the process (without creating subdirectories with job indexes).
+## output_flatten = None
+
+# (process level) Plugin options. Will update to the default.
+[SeuratClusterStats.plugin_opts]
+report_paging = 10
+
+# (process level) The default scheduler options. Will update to the default one
+[SeuratClusterStats.scheduler_opts]
+
+# Environment variables for the process
+[SeuratClusterStats.envs]
+# Whether to cache the plots.
+# Currently only plots for features are supported, since creating the those plots can be time consuming.
+# If `True`, the plots will be cached in the job output directory, which will be not cleaned up when job is rerunning.
+cache = "./.cache"
+
+# The mutaters to mutate the metadata to subset the cells.
+# The mutaters will be applied in the order specified.
+# You can also use the clone selectors to select the TCR clones/clusters.
+# See <https://pwwang.github.io/scplotter/reference/clone_selectors.html>.
+# You can also use key `<newcol>:ident` to set the `<newcol>` as the default ident for the stats.
+# See also <https://pwwang.github.io/biopipen.utils.R/reference/MutateSeuratMeta.html>
+[SeuratClusterStats.envs.mutaters]
+BC9_Clonotype_IDs = "top(n = 10, within = Patient == 'BC09')"
+BC9_Clonotypes = "ifelse(Patient == 'BC09', BC9_Clonotype_IDs, NA)"
+BC10_Clonotype_IDs = "top(n = 10, within = Patient == 'BC10')"
+BC10_Clonotypes = "ifelse(Patient == 'BC10', BC10_Clonotype_IDs, NA)"
+BC11_Clonotype_IDs = "top(n = 10, within = Patient == 'BC11')"
+BC11_Clonotypes = "ifelse(Patient == 'BC11', BC11_Clonotype_IDs, NA)"
+BC9_20Clonotype_IDs = "top(n = 20, within = Patient == 'BC09')"
+BC9_20Clonotypes = "ifelse(Patient == 'BC09', BC9_20Clonotype_IDs, NA)"
+BC10_20Clonotype_IDs = "top(n = 20, within = Patient == 'BC10')"
+BC10_20Clonotypes = "ifelse(Patient == 'BC10', BC10_20Clonotype_IDs, NA)"
+BC11_20Clonotype_IDs = "top(n = 20, within = Patient == 'BC11')"
+BC11_20Clonotypes = "ifelse(Patient == 'BC11', BC11_20Clonotype_IDs, NA)"
+All_T_Cells = "'All T Cells'"
+
+# The cases for clustree plots.
+# Keys are the names of the plots and values are the dicts inherited from `env.clustrees_defaults` except `prefix`.
+# There is no default case for `clustrees`.
+[SeuratClusterStats.envs.clustrees.seurat_clusters]
+prefix = "seurat_clusters"
+
+# The plots for features, include gene expressions, and columns from metadata.
+# Keys are the titles of the cases and values are the dicts inherited from `env.features_defaults`.
+[SeuratClusterStats.envs.features.DiffusionMapComponents]
+features = "DC_1,DC_2,DC_3,DC_4,DC_5"
+plot_type = "violin"
+add_box = true
+
+[SeuratClusterStats.envs.features.DiffusionMapComponents.devpars]
+width = 1200
+height = 800
+
+[SeuratClusterStats.envs.features.Gene_Signatures_Along_DC1]
+plot_type = "heatmap"
+columns_orderby = "mean(DC_1)"
+cluster_rows = true
+features = ["ProInflammatory", "CD8TCellActivation", "Treg", "AntiInflammatory", "Anergy", "LipdMediators", "Glycolysis", "TCACycle", "PentosePhosphatePathway", "GlycogenMetabolism", "M1MacrophagePolarization", "M2MacrophagePolarization", "CytolyticsEffectorPathway", "TypeI_InterferonResponse", "TypeII_InterferonResponse", "Hypoxia_HIF_Regulated", "TCell_Terminal_Differentiation", "G1S", "G2M"]
+
+[SeuratClusterStats.envs.features.Gene_Signatures_Along_DC2]
+plot_type = "heatmap"
+columns_orderby = "mean(DC_2)"
+cluster_rows = true
+features = ["ProInflammatory", "CD8TCellActivation", "Treg", "AntiInflammatory", "Anergy", "LipdMediators", "Glycolysis", "TCACycle", "PentosePhosphatePathway", "GlycogenMetabolism", "M1MacrophagePolarization", "M2MacrophagePolarization", "CytolyticsEffectorPathway", "TypeI_InterferonResponse", "TypeII_InterferonResponse", "Hypoxia_HIF_Regulated", "TCell_Terminal_Differentiation", "G1S", "G2M"]
+
+[SeuratClusterStats.envs.features.Gene_Signatures_Along_DC3]
+plot_type = "heatmap"
+columns_orderby = "mean(DC_3)"
+cluster_rows = true
+features = ["ProInflammatory", "CD8TCellActivation", "Treg", "AntiInflammatory", "Anergy", "LipdMediators", "Glycolysis", "TCACycle", "PentosePhosphatePathway", "GlycogenMetabolism", "M1MacrophagePolarization", "M2MacrophagePolarization", "CytolyticsEffectorPathway", "TypeI_InterferonResponse", "TypeII_InterferonResponse", "Hypoxia_HIF_Regulated", "TCell_Terminal_Differentiation", "G1S", "G2M"]
+
+[SeuratClusterStats.envs.features."Features on UMAP"]
+plot_type = "dim"
+ncol = 3
+features = ["DC_1", "DC_2", "DC_3", "DC_4", "DC_5", "CD8A", "CD4", "FOXP3"]
+
+[SeuratClusterStats.envs.features."Features on UMAP".devpars]
+width = 1200
+
+[SeuratClusterStats.envs.features."Diffusion Components in all T cells"]
+plot_type = "violin"
+ident = "All_T_Cells"
+ncol = 3
+features = ["DC_1", "DC_2", "DC_3", "DC_4", "DC_5"]
+
+[SeuratClusterStats.envs.features."Diffusion Components in all T cells".devpars]
+width = 900
+height = 800
+
+[SeuratClusterStats.envs.features."Diffusion Components in clusters ordered by mean(DC_1)"]
+plot_type = "violin"
+sort_x = "mean(.value)"
+ncol = 3
+features = ["DC_1", "DC_2", "DC_3", "DC_4", "DC_5"]
+
+[SeuratClusterStats.envs.features."Clonotypes along (DC_1)"]
+features = "DC_1"
+plot_type = "ridge"
+ident = "BC9_Clonotypes"
+
+[SeuratClusterStats.envs.features."Clonotypes along (DC_2)"]
+features = "DC_2"
+plot_type = "ridge"
+ident = "BC10_Clonotypes"
+
+[SeuratClusterStats.envs.features."Clonotypes along (DC_3)"]
+features = "DC_3"
+plot_type = "ridge"
+ident = "BC11_Clonotypes"
+
+# The dimensional reduction plots.
+# Keys are the titles of the plots and values are the dicts inherited from `env.dimplots_defaults`. It can also have other parameters from [`scplotter::CellDimPlot`](https://pwwang.github.io/scplotter/reference/CellDimPlot.html).
+[SeuratClusterStats.envs.dimplots.DiffusionMap]
+reduction = "DC"
+
+[SeuratClusterStats.envs.dimplots.UMAP]
+reduction = "umap"
+
+[SeuratClusterStats.envs.dimplots."Samples on UMAP"]
+group_by = "Sample"
+
+[SeuratClusterStats.envs.dimplots."Clonotypes on UMAP (BC9)"]
+group_by = "BC9_Clonotypes"
+keep_na = true
+
+[SeuratClusterStats.envs.dimplots."Clonotypes on UMAP (BC9)".devpars]
+width = 1200
+
+[SeuratClusterStats.envs.dimplots."Clonotypes on UMAP (BC10)"]
+group_by = "BC10_Clonotypes"
+keep_na = true
+
+[SeuratClusterStats.envs.dimplots."Clonotypes on UMAP (BC10)".devpars]
+width = 1200
+
+[SeuratClusterStats.envs.dimplots."Clonotypes on UMAP (BC11)"]
+group_by = "BC11_Clonotypes"
+keep_na = true
+
+[SeuratClusterStats.envs.dimplots."Clonotypes on UMAP (BC11)".devpars]
+width = 1200
+
+[SeuratClusterStats.envs.dimplots."Top 20 Clonotypes on UMAP (BC9)"]
+facet_by = "BC9_20Clonotypes"
+group_by = "BC9_20Clonotypes"
+legend-position = "none"
+
+[SeuratClusterStats.envs.dimplots."Top 20 Clonotypes on UMAP (BC9)".devpars]
+width = 1600
+height = 1200
+
+[SeuratClusterStats.envs.dimplots."Top 20 Clonotypes on UMAP (BC10)"]
+facet_by = "BC10_20Clonotypes"
+group_by = "BC10_20Clonotypes"
+legend-position = "none"
+
+[SeuratClusterStats.envs.dimplots."Top 20 Clonotypes on UMAP (BC10)".devpars]
+width = 1600
+height = 1200
+
+[SeuratClusterStats.envs.dimplots."Top 20 Clonotypes on UMAP (BC11)"]
+facet_by = "BC11_20Clonotypes"
+group_by = "BC11_20Clonotypes"
+legend-position = "none"
+
+[SeuratClusterStats.envs.dimplots."Top 20 Clonotypes on UMAP (BC11)".devpars]
+width = 1600
+height = 1200
+
+# The number/fraction of cells to plot.
+# Keys are the names of the plots and values are the dicts inherited from `env.stats_defaults`.
+[SeuratClusterStats.envs.stats."Number of cells in each cluster (Bar Chart)"]
+plot_type = "bar"
+x_text_angle = 90
+
+[SeuratClusterStats.envs.stats."Number of cells in each cluster by Sample (Bar Chart)"]
+plot_type = "bar"
+group_by = "Sample"
+x_text_angle = 90
+
+# The number of genes expressed in each cell.
+# Keys are the names of the plots and values are the dicts inherited from `env.ngenes_defaults`.
+[SeuratClusterStats.envs.ngenes."Number of genes expressed in each cluster"]
+
+# The parameters for the clustree plots.
+[SeuratClusterStats.envs.clustrees_defaults]
+# The formats to save the plots other than `png`.
+more_formats = []
+
+# Whether to save the code to reproduce the plot.
+save_code = false
+
+# string indicating columns containing clustering information.
+# The trailing dot is not necessary and will be added automatically.
+# When `TRUE`, clustrees will be plotted when there is `FindClusters` or `FindClusters.*` in the `obj@commands`.
+# The latter is generated by `SeuratSubClustering`.
+# This will be ignored when `envs.clustrees` is specified (the prefix of each case must be specified separately).
+prefix = true
+
+# The device parameters for the clustree plot.
+[SeuratClusterStats.envs.clustrees_defaults.devpars]
+# The resolution of the plots.
+res = 100
+
+# The default parameters for `stats`.
+# This is to do some basic statistics on the clusters/cells. For more comprehensive analysis, see <https://pwwang.github.io/scplotter/reference/CellStatPlot.html>.
+# The parameters from the cases can overwrite the default parameters.
+[SeuratClusterStats.envs.stats_defaults]
+# An expression to subset the cells, will be passed to `tidyrseurat::filter()`.
+## subset = None
+
+# The description of the plot, showing in the report.
+## descr = None
+
+# The formats to save the plots other than `png`.
+more_formats = []
+
+# Whether to save the code to reproduce the plot.
+save_code = false
+
+# Whether to save the data used to generate the plot.
+save_data = false
+
+# The device parameters for the clustree plot.
+[SeuratClusterStats.envs.stats_defaults.devpars]
+# The resolution of the plots.
+res = 100
+
+# The default parameters for `ngenes`.
+# The default parameters to plot the number of genes expressed in each cell.
+[SeuratClusterStats.envs.ngenes_defaults]
+# An expression to subset the cells, will be passed to `tidyrseurat::filter()`.
+## subset = None
+
+# The formats to save the plots other than `png`.
+more_formats = []
+
+add_box = true
+
+# The device parameters for the plots.
+[SeuratClusterStats.envs.ngenes_defaults.devpars]
+# The resolution of the plots.
+res = 100
+
+# The height of the plots.
+height = 800
+
+# The width of the plots.
+width = 1000
+
+# The default parameters for `features`.
+[SeuratClusterStats.envs.features_defaults]
+# The features to plot.
+# It can be either a string with comma separated features, a list of features, a file path with `file://` prefix with features (one per line), or an integer to use the top N features from `VariantFeatures(srtobj)`.
+# It can also be a dict with the keys as the feature group names and the values as the features, which is used for heatmap to group the features.
+## features = None
+
+# The order of the clusters to show on the plot.
+# An expression passed to `dplyr::arrange()` on the grouped meta data frame (by `ident`).
+# For example, you can order the clusters by the activation score of the cluster: `desc(mean(ActivationScore, na.rm = TRUE))`, suppose you have a column `ActivationScore` in the metadata.
+# You may also specify the literal order of the clusters by a list of strings (at least two).
+## order_by = None
+
+# An expression to subset the cells, will be passed to `tidyrseurat::filter()`.
+## subset = None
+
+# The description of the plot, showing in the report.
+## descr = None
+
+# The formats to save the plots other than `png`.
+more_formats = []
+
+# Whether to save the code to reproduce the plot.
+save_code = false
+
+# Whether to save the data used to generate the plot.
+save_data = false
+
+# The device parameters for the plots.
+[SeuratClusterStats.envs.features_defaults.devpars]
+# The resolution of the plots.
+res = 100
+
+# The default parameters for `dimplots`.
+# You can also set `dims` to `[1, 2, 3]` to make a 3D dimensional reduction plot.
+# Note that the default `n.components` for `RunUMAP` is 2, so if you want to make a 3D UMAP plot, you need to set `n.components` to 3 in `RunUMAP` parameters in `SeuratSubClustering` or `SeuratClustering`.
+[SeuratClusterStats.envs.dimplots_defaults]
+# The identity to use.
+## group_by = None
+
+# The column name in metadata to split the cells into different plots.
+## split_by = None
+
+# An expression to subset the cells, will be passed to `tidyrseurat::filter()`.
+## subset = None
+
+# Which dimensionality reduction to use.
+reduction = "dim"
+
+# The device parameters for the plots.
+[SeuratClusterStats.envs.dimplots_defaults.devpars]
+# The resolution of the plots.
+res = 100
+
+# +----------------------------------------------------------------------------+
+# | Arguments for process: ClusterMarkers                                      |
+# +----------------------------------------------------------------------------+
+[ClusterMarkers]
+# (process level) Whether enable caching for processes [default: True]
+## cache = None
+
+# (process level) How we should deal with job errors.
+## error_strategy = None
+
+# (process level) How many times to retry the job when failed
+## num_retries = None
+
+# (process level) The scheduler to run the jobs
+## scheduler = None
+
+# (process level) How many jobs to run simultaneously by the scheduler
+## forks = None
+
+# (process level) Whether to flatten the output from jobs of the process (without creating subdirectories with job indexes).
+## output_flatten = None
+
+# (process level) Plugin options. Will update to the default.
+[ClusterMarkers.plugin_opts]
+poplog_pattern = "^(?P<level>INFO|WARN|WARNING|CRITICAL|ERROR|DEBUG?)\\s*\\[\\d+-\\d+-\\d+ \\d+:\\d+:\\d+\\] (?P<message>.*)$"
+report = "file://../reports/scrna/MarkersFinder.svelte"
+report_paging = 8
+
+# (process level) The default scheduler options. Will update to the default one
+[ClusterMarkers.scheduler_opts]
+
+# Environment variables for the process
+[ClusterMarkers.envs]
+# Where to cache the results.
+# If `True`, cache to `outdir` of the job. If `False`, don't cache.
+# Otherwise, specify the directory to cache to.
+cache = "./.cache"
+
+# Number of cores to use for parallel computing for some `Seurat` procedures.
+# * Used in `future::plan(strategy = "multicore", workers = <ncores>)` to parallelize some Seurat procedures.
+# * See also: <https://satijalab.org/seurat/articles/future_vignette.html>
+ncores = 1
+
+# The column name in metadata to group the cells.
+# If only `group_by` is specified, and `ident_1` and `ident_2` are not specified, markers will be found for all groups in this column in the manner of "group vs rest" comparison.
+# `NA` group will be ignored.
+# If `None`, `Seurat::Idents(srtobj)` will be used, which is usually `"seurat_clusters"` after unsupervised clustering..
+## group_by = None
+
+# The first group of cells to compare When this is empty, the comparisons will be expanded to each group v.s. the rest of the cells in `group_by`..
+## ident_1 = None
+
+# The second group of cells to compare If not provided, the rest of the cells are used for `ident_2`..
+## ident_2 = None
+
+# The column name in metadata to separate the cells into different cases.
+# When this is specified, the case will be expanded for each value of the column in metadata. For example, when you have `envs.cases."Cluster Markers".each = "Sample"`, then the case will be expanded as `envs.cases."Cluster Markers - Sample1"`, `envs.cases."Cluster Markers - Sample2"`, etc.
+# You can specify `allmarker_plots` and `overlaps` to plot the markers for all cases in the same plot and plot the overlaps of the markers between different cases by values in this column.
+# `"ident"` can be used as an alias for the default identity column (e.g. `"seurat_clusters"`)..
+## each = None
+
+# The dbs to do enrichment analysis for significant markers.
+# You can use built-in dbs in `enrichit`, or provide your own gmt files.
+# See also <https://pwwang.github.io/enrichit/reference/FetchGMT.html>.
+# The built-in dbs include:
+# * "BioCarta" or "BioCarta_2016" * "GO_Biological_Process" or "GO_Biological_Process_2025" * "GO_Cellular_Component" or "GO_Cellular_Component_2025" * "GO_Molecular_Function" or "GO_Molecular_Function_2025" * "KEGG", "KEGG_Human", "KEGG_2021", or "KEGG_2021_Human" * "Hallmark", "MSigDB_Hallmark", or "MSigDB_Hallmark_2020" * "Reactome", "Reactome_Pathways", or "Reactome_Pathways_2024" * "WikiPathways", "WikiPathways_2024", "WikiPathways_Human", or "WikiPathways_2024_Human" You can also fetch more dbs from <https://maayanlab.cloud/Enrichr/#libraries>.
+dbs = ["KEGG_2021_Human", "MSigDB_Hallmark_2020"]
+
+# An expression passed to `dplyr::filter()` to filter the significant markers for enrichment analysis.
+# Available variables are `p_val`, `avg_log2FC`, `pct.1`, `pct.2` and `p_val_adj`. For example, `"p_val_adj < 0.05 & abs(avg_log2FC) > 1"` to select markers with adjusted p-value < 0.05 and absolute log2 fold change > 1.
+sigmarkers = "p_val_adj < 0.05 & avg_log2FC > 0"
+
+# The style of the enrichment analysis.
+# The enrichment analysis will be done by `EnrichIt()` from [`enrichit`](https://pwwang.github.io/enrichit/).
+# Two styles are available:
+enrich_style = "enrichr"
+
+# The assay to use.
+## assay = None
+
+# An expression to subset the cells for each case.
+## subset = None
+
+# Stop the job if errors happen.
+# Helpful when no/not enough markers are found or no pathways are enriched.
+# If `False`, empty results will be returned.
+error = true
+
+# The mutaters to mutate the metadata.
+# You can also use the clone selectors to select the TCR clones/clusters.
+# See <https://pwwang.github.io/scplotter/reference/clone_selectors.html>.
+# You can also use key `<newcol>:ident` to set the `<newcol>` as the default ident for the stats.
+# See also <https://pwwang.github.io/biopipen.utils.R/reference/MutateSeuratMeta.html>.
+[ClusterMarkers.envs.mutaters]
+
+# All marker plot cases.
+# The keys are the names of the cases and the values are the dicts inherited from `allmarker_plots_defaults`.
+[ClusterMarkers.envs.allmarker_plots."Top 5 markers of each cluster"]
+plot_type = "heatmap_log2fc"
+select = 5
+cutoff = 0.05
+
+# Cases of the plots to generate for the enrichment analysis.
+# The keys are the names of the cases and the values are the dicts inherited from `allenrich_plots_defaults`.
+# The cases under `envs.cases` can inherit this options.
+[ClusterMarkers.envs.allenrich_plots]
+
+# Cases of the plots to generate for the markers.
+# Plot cases. The keys are the names of the cases and the values are the dicts inherited from `marker_plots_defaults`.
+# The cases under `envs.cases` can inherit this options.
+[ClusterMarkers.envs.marker_plots."Volcano Plot (diff_pct)"]
+plot_type = "volcano_pct"
+
+[ClusterMarkers.envs.marker_plots."Volcano Plot (log2FC)"]
+plot_type = "volcano_log2fc"
+
+[ClusterMarkers.envs.marker_plots."Dot Plot"]
+plot_type = "dot"
+
+[ClusterMarkers.envs.marker_plots."Dot Plot".devpars]
+width = 500
+height = 720
+
+# Cases of the plots to generate for the enrichment analysis.
+# The keys are the names of the cases and the values are the dicts inherited from `enrich_plots_defaults`.
+# The cases under `envs.cases` can inherit this options.
+[ClusterMarkers.envs.enrich_plots."Bar Plot"]
+plot_type = "bar"
+ncol = 1
+top_term = 10
+
+# Cases for investigating the overlapping of significant markers between different cases or comparisons.
+# The keys are the names of the cases and the values are the dicts inherited from `overlaps_defaults`.
+# There are two situations that we can perform overlaps:
+# 1. If `ident_1` is not specified, the overlaps can be performed between different comparisons.
+# 2. If `each` is specified, the overlaps can be performed between different cases, where in each case, `ident_1` must be specified.
+[ClusterMarkers.envs.overlaps]
+
+# If you have multiple cases for marker discovery, you can specify them here. The keys are the names of the cases and the values are the above options. If some options are not specified, the default values specified above (under `envs`) will be used.
+# If no cases are specified, the default case will be added with the default values under `envs` with the name `Marker Discovery`..
+[ClusterMarkers.envs.cases.Cluster]
+group_by = "null"
+
+# Rest arguments for `Seurat::FindMarkers()`.
+# Use `-` to replace `.` in the argument name. For example, use `min-pct` instead of `min.pct`.
+[ClusterMarkers.envs.rest]
+# Default options for the plots for all markers when `ident_1` is not specified.
+[ClusterMarkers.envs.allmarker_plots_defaults]
+# The type of the plot.
+# See <https://pwwang.github.io/biopipen.utils.R/reference/VizDEGs.html>.
+# Available types are `violin`, `box`, `bar`, `ridge`, `dim`, `heatmap` and `dot`.
+## plot_type = None
+
+# The extra formats to save the plot in.
+more_formats = []
+
+# Whether to save the code to generate the plot.
+save_code = false
+
+# The device parameters for the plots.
+[ClusterMarkers.envs.allmarker_plots_defaults.devpars]
+# The resolution of the plots.
+res = 100
+
+# Default options for the plots to generate for the enrichment analysis.
+[ClusterMarkers.envs.allenrich_plots_defaults]
+# The type of the plot.
+plot_type = "heatmap"
+
+# The device parameters for the plots.
+[ClusterMarkers.envs.allenrich_plots_defaults.devpars]
+# The resolution of the plots.
+res = 100
+
+# Default options for the plots to generate for the markers.
+[ClusterMarkers.envs.marker_plots_defaults]
+# The type of the plot.
+# See <https://pwwang.github.io/biopipen.utils.R/reference/VizDEGs.html>.
+# Available types are `violin`, `box`, `bar`, `ridge`, `dim`, `heatmap` and `dot`.
+# There are two additional types available - `volcano_pct` and `volcano_log2fc`.
+## plot_type = None
+
+# The extra formats to save the plot in.
+more_formats = []
+
+# Whether to save the code to generate the plot.
+save_code = false
+
+order_by = "desc(avg_log2FC)"
+
+# The device parameters for the plots.
+[ClusterMarkers.envs.marker_plots_defaults.devpars]
+# The resolution of the plots.
+res = 100
+
+# Default options for the plots to generate for the enrichment analysis.
+[ClusterMarkers.envs.enrich_plots_defaults]
+# The extra formats to save the plot in.
+more_formats = []
+
+# Whether to save the code to generate the plot.
+save_code = false
+
+# The device parameters for the plots.
+[ClusterMarkers.envs.enrich_plots_defaults.devpars]
+# The resolution of the plots.
+res = 100
+
+# Default options for investigating the overlapping of significant markers between different cases or comparisons.
+# This means either `ident_1` should be empty, so that they can be expanded to multiple comparisons.
+[ClusterMarkers.envs.overlaps_defaults]
+# The expression to filter the significant markers for each case.
+# If not provided, `envs.sigmarkers` will be used.
+## sigmarkers = None
+
+# The type of the plot to generate for the overlaps.
+plot_type = "venn"
+
+# The extra formats to save the plot in.
+more_formats = []
+
+# Whether to save the code to generate the plot.
+save_code = false
+
+# The device parameters for the plots.
+[ClusterMarkers.envs.overlaps_defaults.devpars]
+# The resolution of the plots.
+res = 100
+
+# +----------------------------------------------------------------------------+
+# | Arguments for process: ClonalStats                                         |
+# +----------------------------------------------------------------------------+
+[ClonalStats]
+# (process level) Whether enable caching for processes [default: True]
+## cache = None
+
+# (process level) How we should deal with job errors.
+## error_strategy = None
+
+# (process level) How many times to retry the job when failed
+## num_retries = None
+
+# (process level) The scheduler to run the jobs
+## scheduler = None
+
+# (process level) How many jobs to run simultaneously by the scheduler
+## forks = None
+
+# (process level) Whether to flatten the output from jobs of the process (without creating subdirectories with job indexes).
+## output_flatten = None
+
+# (process level) Plugin options. Will update to the default.
+[ClonalStats.plugin_opts]
+poplog_pattern = "^(?P<level>INFO|WARN|WARNING|CRITICAL|ERROR|DEBUG?)\\s*\\[\\d+-\\d+-\\d+ \\d+:\\d+:\\d+\\] (?P<message>.*)$"
+report = "file://../reports/tcr/ClonalStats.svelte"
+
+# (process level) The default scheduler options. Will update to the default one
+[ClonalStats.scheduler_opts]
+
+# Environment variables for the process
+[ClonalStats.envs]
+# Whether to cache the plots.
+# Currently only plots for features are supported, since creating the those plots can be time consuming.
+# If `True`, the plots will be cached in the job output directory, which will be not cleaned up when job is rerunning.
+cache = "./.cache"
+
+# The type of visualization to generate.
+## viz_type = None
+
+# An expression to subset the data before plotting.
+# Similar to `mutaters`, it will be applied to each element by `dplyr::filter()` if the object loaded form `in.screpfile` is a list; otherwise, it will be applied to `subset(sobj, subset = <expr>)` if the object is a `Seurat` object.
+## subset = None
+
+# The extra formats to save the plots in, other than PNG.
+more_formats = []
+
+# Whether to save the code used to generate the plots Note that the data directly used to generate the plots will also be saved in an `rda` file.
+# Be careful if the data is large as it may take a lot of disk space.
+save_code = false
+
+# Whether to save the data used to generate the plot.
+save_data = false
+
+# The description of the plot, used to show in the report.
+## descr = None
+
+# The cases to generate the plots if we have multiple cases.
+# The keys are the names of the cases, and the values are the arguments for the plot function.
+# The arguments in `envs` will be used if not specified in `cases`, except for `mutaters`.
+# Sections can be specified as the prefix of the case name, separated by `::`.
+# For example, if you have a case named `Clonal Volume::Case1`, the plot will be put in the section `Clonal Volume`. By default, when there are multiple cases for the same 'viz_type', the name of the 'viz_type' will be used as the default section name (for example, when 'viz_type' is 'volume', the section name will be 'Clonal Volume').
+# When there is only a single case, the section name will default to 'DEFAULT', which will not be shown in the report.
+[ClonalStats.envs.cases."Distribution of clonotypes"]
+viz_type = "stat"
+plot_type = "col"
+top = 20
+
+# The mutaters passed to `dplyr::mutate()` to add new variables.
+# When the object loaded form `in.screpfile` is a list, the mutaters will be applied to each element.
+# The keys are the names of the new variables, and the values are the expressions.
+# When it is a `Seurat` object, typically an output of `scRepertoire::combineExpression()`, the mutaters will be applied to the `meta.data`.
+# You can also use key `<newcol>:ident` to set the `<newcol>` as the default ident for the stats. Only works when the object is a `Seurat` object created by `scRepertoire::combineExpression()`.
+# See <https://pwwang.github.io/biopipen.utils.R/reference/MutateScRep.html>
+[ClonalStats.envs.mutaters]
+
+# The parameters for the plotting device.
+[ClonalStats.envs.devpars]
+# The width of the device
+## width = None
+
+# The height of the device
+## height = None
+
+# The resolution of the device
+res = 100
+

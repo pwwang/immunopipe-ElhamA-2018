@@ -1,0 +1,438 @@
+{
+  "Dimensional reduction plot": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Dimensional-reduction-plot.dim.png",
+            "download": [
+              "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Dimensional-reduction-plot.dim.pdf"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "VDJ Presence": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for VDJ_Presence"
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/VDJ-Presence.dim.png",
+            "download": [
+              "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/VDJ-Presence.dim.pdf"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "DiffusionMap": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/DiffusionMap.dim.png",
+            "download": [
+              "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/DiffusionMap.dim.pdf"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "UMAP": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for seurat_clusters"
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/UMAP.dim.png",
+            "download": [
+              "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/UMAP.dim.pdf"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "Samples on UMAP": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for Sample"
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Samples-on-UMAP.dim.png",
+            "download": [
+              "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Samples-on-UMAP.dim.pdf"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "Clonotypes on UMAP (BC9)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for BC9_Clonotypes"
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Clonotypes-on-UMAP-BC9.dim.png",
+            "download": [
+              "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Clonotypes-on-UMAP-BC9.dim.pdf"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "Clonotypes on UMAP (BC10)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for BC10_Clonotypes"
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Clonotypes-on-UMAP-BC10.dim.png",
+            "download": [
+              "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Clonotypes-on-UMAP-BC10.dim.pdf"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "Clonotypes on UMAP (BC11)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for BC11_Clonotypes"
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Clonotypes-on-UMAP-BC11.dim.png",
+            "download": [
+              "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Clonotypes-on-UMAP-BC11.dim.pdf"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "Top 20 Clonotypes on UMAP (BC9)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for BC9_20Clonotypes"
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Top-20-Clonotypes-on-UMAP-BC9.dim.png",
+            "download": [
+              "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Top-20-Clonotypes-on-UMAP-BC9.dim.pdf"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "Top 20 Clonotypes on UMAP (BC10)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for BC10_20Clonotypes"
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Top-20-Clonotypes-on-UMAP-BC10.dim.png",
+            "download": [
+              "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Top-20-Clonotypes-on-UMAP-BC10.dim.pdf"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "Top 20 Clonotypes on UMAP (BC11)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Dimensionality reduction plot for BC11_20Clonotypes"
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Top-20-Clonotypes-on-UMAP-BC11.dim.png",
+            "download": [
+              "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/dimplots/Top-20-Clonotypes-on-UMAP-BC11.dim.pdf"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "Clustree plots": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "The clustree plots displays clustering results from the Seurat object across different\n                resolutions of the clustering algorithm\n                (<a target=\"_blank\" href=\"https://satijalab.org/seurat/reference/findclusters\">Seurat::FindClusters<\/a>).\n                Each node represents a cluster, with the resolution levels labeled along the vertical (y) axis.\n                The size of each node reflects the number of cells in that cluster. Edges connect clusters between\n                adjacent resolutions and indicate how cells transition between clusters as resolution increases.\n                The thickness of the edges corresponds to the proportion of shared cells (in_prop) between clusters,\n                where darker lines signify a higher overlap (up to 100%). The color of the edges indicates the actual\n                number of cells that transitioned between clusters."
+          }
+        ],
+        "table_of_images": [
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/clustrees/seurat_clusters.clustree.png",
+            "descr": "Resolutions: 2.48; resolution used: 2.48"
+          }
+        ]
+      }
+    }
+  },
+  "Number of cells in each cluster (Bar Chart)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "The bar plot shows the distribution of cells across categories defined by 'seurat_clusters'. The values represent the number of cells. "
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/stats/Number-of-cells-in-each-cluster-Bar-Chart.png"
+          }
+        ]
+      }
+    }
+  },
+  "Number of cells in each cluster by Sample (Bar Chart)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "The bar plot shows the distribution of cells across categories defined by 'seurat_clusters', grouped by Sample. The values represent the number of cells. "
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/stats/Number-of-cells-in-each-cluster-by-Sample-Bar-Chart.png"
+          }
+        ]
+      }
+    }
+  },
+  "Number of genes expressed in each cluster": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "Number of genes expressed in each cluster"
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/ngenes/Number-of-genes-expressed-in-each-cluster.png"
+          }
+        ]
+      }
+    }
+  },
+  "DiffusionMapComponents": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "The plot shows the distribution or pattern of the specified features (DC_1, DC_2, DC_3, DC_4, DC_5) across cells. The plot type is 'violin', showing the distribution of feature values by the grouping variables. "
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/features/DiffusionMapComponents.png"
+          }
+        ]
+      }
+    }
+  },
+  "Gene_Signatures_Along_DC1": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "The plot shows the distribution or pattern of the specified features (ProInflammatory, CD8TCellActivation, Treg, AntiInflammatory, Anergy, LipdMediators, Glycolysis, TCACycle, PentosePhosphatePathway, GlycogenMetabolism, M1MacrophagePolarization, M2MacrophagePolarization, CytolyticsEffectorPathway, TypeI_InterferonResponse, TypeII_InterferonResponse, Hypoxia_HIF_Regulated, TCell_Terminal_Differentiation, G1S, G2M) across cells. The plot type is 'heatmap', arranged as a heatmap by rows_name and other grouping variables. "
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/features/Gene_Signatures_Along_DC1.png"
+          }
+        ]
+      }
+    }
+  },
+  "Gene_Signatures_Along_DC2": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "The plot shows the distribution or pattern of the specified features (ProInflammatory, CD8TCellActivation, Treg, AntiInflammatory, Anergy, LipdMediators, Glycolysis, TCACycle, PentosePhosphatePathway, GlycogenMetabolism, M1MacrophagePolarization, M2MacrophagePolarization, CytolyticsEffectorPathway, TypeI_InterferonResponse, TypeII_InterferonResponse, Hypoxia_HIF_Regulated, TCell_Terminal_Differentiation, G1S, G2M) across cells. The plot type is 'heatmap', arranged as a heatmap by rows_name and other grouping variables. "
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/features/Gene_Signatures_Along_DC2.png"
+          }
+        ]
+      }
+    }
+  },
+  "Gene_Signatures_Along_DC3": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "The plot shows the distribution or pattern of the specified features (ProInflammatory, CD8TCellActivation, Treg, AntiInflammatory, Anergy, LipdMediators, Glycolysis, TCACycle, PentosePhosphatePathway, GlycogenMetabolism, M1MacrophagePolarization, M2MacrophagePolarization, CytolyticsEffectorPathway, TypeI_InterferonResponse, TypeII_InterferonResponse, Hypoxia_HIF_Regulated, TCell_Terminal_Differentiation, G1S, G2M) across cells. The plot type is 'heatmap', arranged as a heatmap by rows_name and other grouping variables. "
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/features/Gene_Signatures_Along_DC3.png"
+          }
+        ]
+      }
+    }
+  },
+  "Features on UMAP": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "The plot shows the distribution or pattern of the specified features (DC_1, DC_2, DC_3, DC_4, DC_5, CD8A, CD4, FOXP3) across cells. The plot type is 'dim', displaying the features on a dimensional reduction embedding. The reduction used is \"umap\", using dimensions 1,2"
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/features/Features-on-UMAP.png"
+          }
+        ]
+      }
+    }
+  },
+  "Diffusion Components in all T cells": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "The plot shows the distribution or pattern of the specified features (DC_1, DC_2, DC_3, DC_4, DC_5) across cells, identified by \"All_T_Cells\". The plot type is 'violin', showing the distribution of feature values by the grouping variables. "
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/features/Diffusion-Components-in-all-T-cells.png"
+          }
+        ]
+      }
+    }
+  },
+  "Diffusion Components in clusters ordered by mean(DC_1)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "The plot shows the distribution or pattern of the specified features (DC_1, DC_2, DC_3, DC_4, DC_5) across cells. The plot type is 'violin', showing the distribution of feature values by the grouping variables. "
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/features/Diffusion-Components-in-clusters-ordered-by-mean-DC_1.png"
+          }
+        ]
+      }
+    }
+  },
+  "Clonotypes along (DC_1)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "The plot shows the distribution or pattern of the specified features (DC_1) across cells, identified by \"BC9_Clonotypes\". The plot type is 'ridge', showing the distribution of feature values by the grouping variables. "
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/features/Clonotypes-along-DC_1.png"
+          }
+        ]
+      }
+    }
+  },
+  "Clonotypes along (DC_2)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "The plot shows the distribution or pattern of the specified features (DC_2) across cells, identified by \"BC10_Clonotypes\". The plot type is 'ridge', showing the distribution of feature values by the grouping variables. "
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/features/Clonotypes-along-DC_2.png"
+          }
+        ]
+      }
+    }
+  },
+  "Clonotypes along (DC_3)": {
+    "#": {
+      "#": {
+        "flat": [
+          {
+            "kind": "descr",
+            "content": "The plot shows the distribution or pattern of the specified features (DC_3) across cells, identified by \"BC11_Clonotypes\". The plot type is 'ridge', showing the distribution of feature values by the grouping variables. "
+          },
+          {
+            "kind": "image",
+            "src": "/mnt/disks/.cwd/Immunopipe-output/SeuratClusterStats/samples.scRep.cluster_stats/features/Clonotypes-along-DC_3.png"
+          }
+        ]
+      }
+    }
+  }
+}

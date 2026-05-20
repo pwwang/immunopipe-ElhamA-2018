@@ -1,0 +1,6 @@
+Sample	Patient	TCRData	RNAData
+BC09_TUMOR1	BC09	prepared-data/BC09_TUMOR1	prepared-data/BC09_TUMOR1
+BC09_TUMOR2	BC09	prepared-data/BC09_TUMOR2	prepared-data/BC09_TUMOR2
+BC10_TUMOR1	BC10	prepared-data/BC10_TUMOR1	prepared-data/BC10_TUMOR1
+BC11_TUMOR1	BC11	prepared-data/BC11_TUMOR1	prepared-data/BC11_TUMOR1
+BC11_TUMOR2	BC11	prepared-data/BC11_TUMOR2	prepared-data/BC11_TUMOR2
